@@ -10,11 +10,19 @@ class TasksController extends Controller
 {
     public function index()
     {
+        
+        if (\Auth::check()){
+            $user = \Auth::user();
+            /*$tasks = Task::all();*/
+            
+        }
+        
         $tasks = Task::all();
         
-        return view('tasks.index',[
+        return view('welcome',[
             'tasks' => $tasks,
         ]);
+        
     }
 
     public function create()
